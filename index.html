@@ -72,23 +72,27 @@
                         <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
                     </ul>
                 </header>
-                <form action="送信先のURL" method="post">
-                    <div>
-                        <div class="row">
-                            <div class="col-6 col-12-medium">
-                                <input type="text" name="name" placeholder="お名前" />
-                            </div>
-                            <div class="col-6 col-12-medium">
-                                <input type="text" name="email" placeholder="メールアドレス" />
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="subject" placeholder="件名" />
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" placeholder="お問い合わせ内容" rows="6"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <input type="submit" value="送信" />
+                <form action="send_email.php" method="post">
+    <label for="clientName">依頼者名</label>
+    <input type="text" id="clientName" name="clientName" required>
+
+    <label for="storeName">店舗名</label>
+    <input type="text" id="storeName" name="storeName" required>
+
+    <label for="pageUrl">媒体ページURL</label>
+    <input type="url" id="pageUrl" name="pageUrl" required>
+
+    <label for="castName">キャスト名</label>
+    <input type="text" id="castName" name="castName" required>
+
+    <label for="videoType">動画種別</label>
+    <input type="text" id="videoType" name="videoType" required>
+
+    <label for="content">内容</label>
+    <textarea id="content" name="content" required></textarea>
+
+    <input type="submit" value="送信">
+</form>
                             </div>
                         </div>
                     </div>
