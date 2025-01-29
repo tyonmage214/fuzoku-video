@@ -6,6 +6,20 @@
     <title>風俗動画編集代行サービス | 高品質＆迅速対応</title>
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -52,9 +66,11 @@
                     <tr>
                         <td>女性求人用動画</td>
                         <td>20,000円 / 本</td>
+                    </tr>
                     <tr>
                         <td>スタッフ求人用動画</td>
                         <td>15,000円 / 本</td>
+                    </tr>
                     <tr>
                         <td>店舗CM・女の子紹介動画</td>
                         <td>20,000円 / 本</td>
@@ -71,43 +87,40 @@
                         <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
                         <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
                     </ul>
+                    </footer>
                 </header>
-                <form action="send_email.php" method="post">
-    <label for="clientName">依頼者名</label>
-    <input type="text" id="clientName" name="clientName" required>
+                <form action="send_email.php" method="post" aria-label="お問い合わせフォーム">
+                    <label for="clientName">依頼者名</label>
+                    <input type="text" id="clientName" name="clientName" required aria-label="依頼者名">
 
-    <label for="storeName">店舗名</label>
-    <input type="text" id="storeName" name="storeName" required>
+                    <label for="storeName">店舗名</label>
+                    <input type="text" id="storeName" name="storeName" required aria-label="店舗名">
 
-    <label for="pageUrl">媒体ページURL</label>
-    <input type="url" id="pageUrl" name="pageUrl" required>
+                    <label for="pageUrl">媒体ページURL</label>
+                    <input type="url" id="pageUrl" name="pageUrl" required aria-label="媒体ページURL">
 
-    <label for="castName">キャスト名</label>
-    <input type="text" id="castName" name="castName" required>
+                    <label for="castName">キャスト名</label>
+                    <input type="text" id="castName" name="castName" required aria-label="キャスト名">
 
-    <label for="videoType">動画種別</label>
-    <input type="text" id="videoType" name="videoType" required>
+                    <label for="videoType">動画種別</label>
+                    <input type="text" id="videoType" name="videoType" required aria-label="動画種別">
 
-    <label for="content">内容</label>
-    <textarea id="content" name="content" required></textarea>
+                    <label for="content">内容</label>
+                    <textarea id="content" name="content" required aria-label="内容"></textarea>
 
-    <input type="submit" value="送信">
-</form>
-                            </div>
-                        </div>
-                    </div>
+                    <input type="submit" value="送信">
                 </form>
             </article>
 
         </div>
 
         <!-- Footer -->
-        <div id="footer">
+        <footer id="footer">
             <ul class="copyright">
                 <li>&copy; 風俗動画編集代行サービス</li>
                 <li>Design: [デザイナー名]</li>
             </ul>
-        </div>
+        </footer>
 
     </div>
 
