@@ -88,7 +88,10 @@
             <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
         </ul>
     </header>
-   <form action="#" method="post">
+   <form action="https://formsubmit.co/r.morii@honest-inc.co.jp" method="POST">
+	<input type="hidden" name="_subject" value="新しい動画編集の依頼">
+	<input type="hidden" name="_captcha" value="false">
+
 	<div>
 		<div class="row">
 			<div class="col-6 col-12-medium">
@@ -117,7 +120,13 @@
 				</select>
 			</div>
 			<div class="col-12">
-				<textarea name="message" placeholder="お問い合わせ・ご依頼内容" rows="6" required></textarea>
+				<input type="url" name="video-url" placeholder="ギガファイル便のURLを入力してください" required />
+			</div>
+			<div class="col-12">
+				<input type="text" name="subject" placeholder="件名" required />
+			</div>
+			<div class="col-12">
+				<textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
 			</div>
 			<div class="col-12">
 				<input type="submit" value="送信" />
