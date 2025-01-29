@@ -80,37 +80,48 @@
 
             <!-- Contact -->
             <article id="contact" class="panel">
-                <header>
-                    <h2>お問い合わせ</h2>
-                    <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
-                    <ul>
-                        <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
-                        <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
-                    </ul>
-                    </footer>
-                </header>
-                <form action="send_email.php" method="post" aria-label="お問い合わせフォーム">
-                    <label for="clientName">依頼者名</label>
-                    <input type="text" id="clientName" name="clientName" required aria-label="依頼者名">
+    <header>
+        <h2>お問い合わせ</h2>
+        <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
+        <ul>
+            <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
+            <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
+        </ul>
+    </header>
+    <form action="send_email.php" method="post" aria-label="お問い合わせフォーム">
+        <div class="form-group">
+            <label for="clientName">依頼者名</label>
+            <input type="text" id="clientName" name="clientName" required aria-label="依頼者名">
+        </div>
 
-                    <label for="storeName">店舗名</label>
-                    <input type="text" id="storeName" name="storeName" required aria-label="店舗名">
+        <div class="form-group">
+            <label for="storeName">店舗名</label>
+            <input type="text" id="storeName" name="storeName" required aria-label="店舗名">
+        </div>
 
-                    <label for="pageUrl">媒体ページURL</label>
-                    <input type="url" id="pageUrl" name="pageUrl" required aria-label="媒体ページURL">
+        <div class="form-group">
+            <label for="pageUrl">媒体ページURL</label>
+            <input type="url" id="pageUrl" name="pageUrl" required aria-label="媒体ページURL">
+        </div>
 
-                    <label for="castName">キャスト名</label>
-                    <input type="text" id="castName" name="castName" required aria-label="キャスト名">
+        <div class="form-group">
+            <label for="castName">キャスト名</label>
+            <input type="text" id="castName" name="castName" required aria-label="キャスト名">
+        </div>
 
-                    <label for="videoType">動画種別</label>
-                    <input type="text" id="videoType" name="videoType" required aria-label="動画種別">
+        <div class="form-group">
+            <label for="videoType">動画種別</label>
+            <input type="text" id="videoType" name="videoType" required aria-label="動画種別">
+        </div>
 
-                    <label for="content">内容</label>
-                    <textarea id="content" name="content" required aria-label="内容"></textarea>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea id="content" name="content" required aria-label="内容"></textarea>
+        </div>
 
-                    <input type="submit" value="送信">
-                </form>
-            </article>
+        <input type="submit" value="送信">
+    </form>
+</article>
 
         </div>
 
