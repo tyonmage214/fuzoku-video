@@ -88,7 +88,7 @@
             <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
         </ul>
     </header>
- <form id="contact-form" action="https://script.google.com/macros/s/AKfycbynaGCE3mROqdlZ-llBiRjhPbqJYXtMQOu8ePgzPESaEICZVisKGuuMAgzWFo9tpEfJEA/exec" method="POST">
+ <form id="contact-form" action="https://script.google.com/macros/s/あなたのGASの最新URL/exec" method="POST">
 	<div>
 		<div class="row">
 			<div class="col-6 col-12-medium">
@@ -104,7 +104,10 @@
 				<input type="text" name="cast_name" placeholder="キャスト名" />
 			</div>
 			<div class="col-12">
-				<input type="url" name="media_url" placeholder="媒体ページURL" required />
+				<input type="text" name="media_url" placeholder="媒体ページURL（https://〜）" required />
+			</div>
+			<div class="col-12">
+				<input type="text" name="video_url" placeholder="ギガファイル便のURL（https://〜）" required />
 			</div>
 			<div class="col-12">
 				<label for="video-type">動画種別</label>
@@ -115,9 +118,6 @@
 					<option value="スタッフ求人用動画">スタッフ求人用動画</option>
 					<option value="店舗CM・女の子紹介動画">店舗CM・女の子紹介動画</option>
 				</select>
-			</div>
-			<div class="col-12">
-				<input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required />
 			</div>
 			<div class="col-12">
 				<input type="text" name="subject" placeholder="件名" required />
