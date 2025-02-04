@@ -52,55 +52,31 @@
             <!-- Work -->
             <article id="work" class="panel">
                 <header>
-			<h2>料金一覧</h2>
-
-<!-- 料金プラン選択（プルダウンメニュー） -->
-<label for="plan-type">料金プランを選択:</label>
-<select id="plan-type">
-    <option value="">選択してください</option>
-    <option value="store">■店舗様</option>
-    <option value="cast">■キャスト様</option>
-</select>
                     <h2>サービス概要</h2>
                 </header>
                 <table border="1">
                     <tr>
-                        <!-- ■店舗様の料金表（初期状態は非表示） -->
-<div id="store-plan" style="display: none;">
-    <h2>■店舗様</h2>
-    <h3>☆女性求人用動画 / スタッフ求人用動画</h3>
-    <p><strong>【動画形式】</strong></p>
-    <ul>
-        <li>スライドムービー（30秒～1分程度） → 1本 3,000円</li>
-        <li>インタビュー形式（1分30秒～2分程度） → 1本 4,000円</li>
-    </ul>
-    <p><strong>オリジナル動画</strong></p>
-    <ul>
-        <li>30秒～2分 → 1本 3,000円</li>
-        <li>2分～5分 → 1本 7,000円</li>
-        <li>5分～10分 → 1本 13,000円</li>
-        <li>15分以上～ → 30,000円～</li>
-    </ul>
-    <h3>☆店舗CM</h3>
-    <p>料金 → 1本 10,000円～</p>
-    <h3>☆女の子紹介動画</h3>
-    <p>料金 → 1本 8,000円</p>
-</div>
-
-<!-- ■キャスト様の料金表（初期状態は非表示） -->
-<div id="cast-plan" style="display: none;">
-    <h2>■キャスト様</h2>
-    <h3>☆写メ日記用動画</h3>
-    <p>料金 → 1本 1,000円</p>
-    <p>～イベント時に自分を写メ日記等でアピールしたい時などにオススメ～</p>
-    <h3>☆SNS用動画（X、TikTok、YouTubeなど）</h3>
-    <ul>
-        <li>30秒～2分 → 1本 3,000円</li>
-        <li>2分～5分 → 1本 7,000円</li>
-        <li>5分～10分 → 1本 13,000円</li>
-        <li>15分以上～ → 30,000円～</li>
-    </ul>
-</div>
+                        <th>動画内容</th>
+                        <th>料金</th>
+                    </tr>
+                    <tr>
+                        <td>写メ日記用動画</td>
+                        <td>1,000円 / 本</td>
+                    </tr>
+                    <tr>
+                        <td>女性求人用動画</td>
+                        <td>20,000円 / 本</td>
+                    </tr>
+                    <tr>
+                        <td>スタッフ求人用動画</td>
+                        <td>15,000円 / 本</td>
+                    </tr>
+                    <tr>
+                        <td>店舗CM・女の子紹介動画</td>
+                        <td>20,000円 / 本</td>
+                    </tr>
+                </table>
+            </article>
 
             <!-- Contact -->
             <article id="contact" class="panel">
@@ -164,22 +140,5 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-		    <script>
-document.getElementById("plan-type").addEventListener("change", function() {
-    var storePlan = document.getElementById("store-plan");
-    var castPlan = document.getElementById("cast-plan");
-
-    if (this.value === "store") {
-        storePlan.style.display = "block";
-        castPlan.style.display = "none";
-    } else if (this.value === "cast") {
-        storePlan.style.display = "none";
-        castPlan.style.display = "block";
-    } else {
-        storePlan.style.display = "none";
-        castPlan.style.display = "none";
-    }
-});
-</script>
 </body>
 </html>
