@@ -12,9 +12,9 @@
             border-collapse: collapse;
         }
         th, td {
-            padding: 10px;
+            padding: 10px; /* 修正 */
             text-align: left;
-            border: 1px solid #ddd;
+            border: 1px solid #ddd; /* 修正 */
         }
         th {
             background-color: #f2f2f2;
@@ -54,8 +54,6 @@
                 <header>
                     <h2>サービス概要</h2>
                 </header>
-
-                <!-- 料金プラン選択 -->
                 <label for="plan-type">料金プランを選択:</label>
                 <select id="plan-type">
                     <option value="">選択してください</option>
@@ -63,7 +61,6 @@
                     <option value="cast">■キャスト様</option>
                 </select>
 
-                <!-- ■店舗様の料金表 -->
                 <div id="store-plan" style="display: none;">
                     <h2>■店舗様</h2>
                     <h3>☆女性求人用動画 / スタッフ求人用動画</h3>
@@ -85,12 +82,10 @@
                     <p>料金 → 1本 8,000円</p>
                 </div>
 
-                <!-- ■キャスト様の料金表 -->
                 <div id="cast-plan" style="display: none;">
                     <h2>■キャスト様</h2>
                     <h3>☆写メ日記用動画</h3>
                     <p>料金 → 1本 1,000円</p>
-                    <p>～イベント時に自分を写メ日記等でアピールしたい時などにオススメ～</p>
                     <h3>☆SNS用動画（X、TikTok、YouTubeなど）</h3>
                     <ul>
                         <li>30秒～2分 → 1本 3,000円</li>
@@ -101,7 +96,7 @@
                 </div>
             </article>
 
-            <!-- Contact（お問い合わせ） -->
+            <!-- Contact -->
             <article id="contact" class="panel">
                 <header>
                     <h2>お問い合わせ</h2>
@@ -122,7 +117,6 @@
 
     </div>
 
-    <!-- JavaScriptで料金表の切り替え -->
     <script>
         document.getElementById("plan-type").addEventListener("change", function() {
             var storePlan = document.getElementById("store-plan");
