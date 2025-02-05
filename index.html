@@ -23,107 +23,230 @@
             padding: 12px 25px;
             margin: 5px;
             border: none;
-            background-color: #808080;
-            color: white;
+            background-color: #007bff; /* グラフの色に合わせて変更 */
+            color: white; /* 対照色に変更 */
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
         .service-button:hover {
-            background-color: #696969;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            background-color: #0056b3; /* ホバー時の色 */
+            color: #ffffff; /* ホバー時の文字色 */
         }
         .hidden {
             display: none;
         }
-        #main {
-            display: block !important;
-        }
     </style>
 </head>
 <body class="is-preload">
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.body.classList.remove("is-preload");
-        });
-    </script>
+
+    <!-- Wrapper-->
     <div id="wrapper">
+
+        <!-- Nav -->
         <nav id="nav">
             <a href="#home" class="icon solid fa-home"><span>トップ</span></a>
             <a href="#work" class="icon solid fa-folder"><span>サービス</span></a>
             <a href="#contact" class="icon solid fa-envelope"><span>ご依頼</span></a>
+            <a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>X</span></a>
         </nav>
+
+        <!-- Main -->
         <div id="main">
+
+            <!-- Home -->
             <article id="home" class="panel intro">
                 <header>
                     <h1>風俗動画編集代行サービス</h1>
                     <p>風俗業界向けの動画編集サービスを提供しています。</p>
                 </header>
+                <a href="#work" class="jumplink pic">
+                    <span class="arrow icon solid fa-chevron-right"><span>サービスを見る</span></span>
+                    <img src="images/me.jpg" alt="風俗動画編集サービスの画像" />
+                </a>
             </article>
+
+            <!-- Work -->
             <article id="work" class="panel">
                 <header>
                     <h2>サービス概要</h2>
-                    <button class="service-button" onclick="showServiceOptions()">サービス選択</button>
+                    <p>以下からサービスを選択してください:</p>
+                    <button class="service-button" onclick="showServices('キャスト')">キャスト様</button>
+                    <button class="service-button" onclick="showServices('店舗')">店舗様</button>
                 </header>
-                <div id="service-options" class="hidden">
-                    <h3>動画種別を選択してください:</h3>
-                    <select id="video-type" onchange="showVideoDurationOptions()">
-                        <option value="">選択してください</option>
-                        <option value="スライドムービー">スライドムービー</option>
-                        <option value="インタビュー形式">インタビュー形式</option>
-                        <option value="オリジナル動画">オリジナル動画</option>
-                    </select>
-                    <div id="duration-options" class="hidden">
-                        <h3>動画時間を選択してください:</h3>
-                        <select id="video-duration" onchange="calculateTotal()">
-                            <option value="">選択してください</option>
-                            <option value="30秒～2分">30秒～2分</option>
-                            <option value="2分～5分">2分～5分</option>
-                            <option value="5分～10分">5分～10分</option>
-                            <option value="15分以上">15分以上</option>
-                        </select>
-                    </div>
-                    <h3>合計金額: <span id="total-amount">0円</span></h3>
+
+                <div id="cast-services" class="hidden">
+                    <table>
+                        <tr>
+                            <th>キャスト様</th>
+                            <th>料金</th>
+                        </tr>
+                        <tr>
+                            <td>写メ日記用動画</td>
+                            <td>1本 1000円</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">～イベント時に自分を写メ日記等でアピールしたい時などにオススメ～</td>
+                        </tr>
+                        <tr>
+                            <td>SNS用動画〈X、tiktok、YouTubeなど〉</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>30秒～2分</td>
+                            <td>1本 3000円</td>
+                        </tr>
+                        <tr>
+                            <td>2分～5分</td>
+                            <td>1本 7000円</td>
+                        </tr>
+                        <tr>
+                            <td>5分～10分</td>
+                            <td>1本 13000円</td>
+                        </tr>
+                        <tr>
+                            <td>15分以上～</td>
+                            <td>30000円</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="store-services" class="hidden">
+                    <table>
+                        <tr>
+                            <th>店舗様</th>
+                            <th>料金</th>
+                        </tr>
+                        <tr>
+                            <td>女性求人用動画</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>スタッフ求人用動画</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">求人動画の場合、以下の動画形式からお選びいただきます。</td>
+                        </tr>
+                        <tr>
+                            <td>スライドムービー（30秒～1分程度）</td>
+                            <td>1本 3000円</td>
+                        </tr>
+                        <tr>
+                            <td>インタビュー形式（1分30秒～2分程度）</td>
+                            <td>1本 4000円</td>
+                        </tr>
+                        <tr>
+                            <td>オリジナル動画（時間指定）</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>30秒～2分</td>
+                            <td>1本 3000円</td>
+                        </tr>
+                        <tr>
+                            <td>2分～5分</td>
+                            <td>1本 7000円</td>
+                        </tr>
+                        <tr>
+                            <td>5分～10分</td>
+                            <td>1本 13000円</td>
+                        </tr>
+                        <tr>
+                            <td>15分以上～</td>
+                            <td>30000円</td>
+                        </tr>
+                        <tr>
+                            <td>店舗CM</td>
+                            <td>1本 10000円</td>
+                        </tr>
+                        <tr>
+                            <td>女の子紹介動画</td>
+                            <td>1本 8000円</td>
+                        </tr>
+                    </table>
                 </div>
             </article>
+
+            <!-- Contact -->
+            <article id="contact" class="panel">
+                <header>
+                    <h2>お問い合わせ</h2>
+                    <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
+                    <ul>
+                        <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
+                        <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
+                    </ul>
+                </header>
+                <form id="contact-form" action="https://script.google.com/macros/s/AKfycbynaGCE3mROqdlZ-llBiRjhPbqJYXtMQOu8ePgzPESaEICZVisKGuuMAgzWFo9tpEfJEA/exec" method="POST">
+                    <div>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="name" placeholder="お名前" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="email" name="email" placeholder="メールアドレス" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="store_name" placeholder="店舗名" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="cast_name" placeholder="キャスト名" />
+                            </div>
+                            <div class="col-12">
+                                <input type="url" name="media_url" placeholder="媒体ページURL" required />
+                            </div>
+                            <div class="col-12">
+                                <label for="video-type">動画種別</label>
+                                <select name="video_type" id="video-type" required>
+                                    <option value="">選択してください</option>
+                                    <option value="写メ日記用動画">写メ日記用動画</option>
+                                    <option value="女性求人用動画">女性求人用動画</option>
+                                    <option value="スタッフ求人用動画">スタッフ求人用動画</option>
+                                    <option value="店舗CM・女の子紹介動画">店舗CM・女の子紹介動画</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required />
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" placeholder="件名" required />
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" value="送信" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </article>
         </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            function showServices(serviceType) {
+                const castServices = document.getElementById('cast-services');
+                const storeServices = document.getElementById('store-services');
+
+                castServices.classList.add('hidden');
+                storeServices.classList.add('hidden');
+
+                if (serviceType === 'キャスト') {
+                    castServices.classList.remove('hidden');
+                } else if (serviceType === '店舗') {
+                    storeServices.classList.remove('hidden');
+                }
+            }
+        </script>
+
     </div>
-    <script>
-        const prices = {
-            'スライドムービー': { '30秒～2分': 3000, '2分～5分': 7000, '5分～10分': 13000, '15分以上': 30000 },
-            'インタビュー形式': { '30秒～2分': 4000, '2分～5分': 8000, '5分～10分': 15000, '15分以上': 35000 },
-            'オリジナル動画': { '30秒～2分': 5000, '2分～5分': 9000, '5分～10分': 16000, '15分以上': 40000 }
-        };
-        function showServiceOptions() {
-            document.getElementById('service-options').classList.remove('hidden');
-        }
-        function showVideoDurationOptions() {
-            const videoType = document.getElementById('video-type').value;
-            const durationOptions = document.getElementById('duration-options');
-            if (videoType) {
-                durationOptions.classList.remove('hidden');
-            } else {
-                durationOptions.classList.add('hidden');
-            }
-            calculateTotal();
-        }
-        function calculateTotal() {
-            const videoType = document.getElementById('video-type').value;
-            const videoDuration = document.getElementById('video-duration').value;
-            if (videoType && videoDuration) {
-                document.getElementById('total-amount').innerText = `${prices[videoType][videoDuration]}円`;
-            } else {
-                document.getElementById('total-amount').innerText = '0円';
-            }
-        }
-    </script>
 </body>
 </html>
