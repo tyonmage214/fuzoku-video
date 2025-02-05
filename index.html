@@ -12,9 +12,9 @@
             border-collapse: collapse;
         }
         th, td {
-            padding: 10px; /* 修正 */
+            padding: 10px;
             text-align: left;
-            border: 1px solid #ddd; /* 修正 */
+            border: 1px solid #ddd;
         }
         th {
             background-color: #f2f2f2;
@@ -54,6 +54,8 @@
                 <header>
                     <h2>サービス概要</h2>
                 </header>
+
+                <!-- 料金プラン選択 -->
                 <label for="plan-type">料金プランを選択:</label>
                 <select id="plan-type">
                     <option value="">選択してください</option>
@@ -61,6 +63,7 @@
                     <option value="cast">■キャスト様</option>
                 </select>
 
+                <!-- ■店舗様の料金表 -->
                 <div id="store-plan" style="display: none;">
                     <h2>■店舗様</h2>
                     <h3>☆女性求人用動画 / スタッフ求人用動画</h3>
@@ -82,10 +85,12 @@
                     <p>料金 → 1本 8,000円</p>
                 </div>
 
+                <!-- ■キャスト様の料金表 -->
                 <div id="cast-plan" style="display: none;">
                     <h2>■キャスト様</h2>
                     <h3>☆写メ日記用動画</h3>
                     <p>料金 → 1本 1,000円</p>
+                    <p>～イベント時に自分を写メ日記等でアピールしたい時などにオススメ～</p>
                     <h3>☆SNS用動画（X、TikTok、YouTubeなど）</h3>
                     <ul>
                         <li>30秒～2分 → 1本 3,000円</li>
@@ -106,17 +111,12 @@
                         <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
                     </ul>
                 </header>
-                <form id="contact-form" action="https://script.google.com/macros/s/あなたのGASの最新URL/exec" method="POST">
-                    <input type="text" name="name" placeholder="お名前" required />
-                    <input type="email" name="email" placeholder="メールアドレス" required />
-                    <textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
-                    <input type="submit" value="送信" />
-                </form>
             </article>
         </div>
 
     </div>
 
+    <!-- JavaScriptで料金表の切り替え -->
     <script>
         document.getElementById("plan-type").addEventListener("change", function() {
             var storePlan = document.getElementById("store-plan");
@@ -134,10 +134,13 @@
             }
         });
     </script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 </html>
