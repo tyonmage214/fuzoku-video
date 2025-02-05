@@ -19,6 +19,19 @@
         th {
             background-color: #f2f2f2;
         }
+        .service-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .service-button:hover {
+            background-color: #0056b3;
+        }
         .hidden {
             display: none;
         }
@@ -56,12 +69,9 @@
             <article id="work" class="panel">
                 <header>
                     <h2>サービス概要</h2>
-                    <label for="service-type">サービスを選択してください:</label>
-                    <select id="service-type" onchange="showServices()">
-                        <option value="">選択してください</option>
-                        <option value="キャスト">キャスト様</option>
-                        <option value="店舗">店舗様</option>
-                    </select>
+                    <p>以下からサービスを選択してください:</p>
+                    <button class="service-button" onclick="showServices('キャスト')">キャスト様</button>
+                    <button class="service-button" onclick="showServices('店舗')">店舗様</button>
                 </header>
 
                 <div id="cast-services" class="hidden">
@@ -220,8 +230,7 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script>
-            function showServices() {
-                const serviceType = document.getElementById('service-type').value;
+            function showServices(serviceType) {
                 const castServices = document.getElementById('cast-services');
                 const storeServices = document.getElementById('store-services');
 
