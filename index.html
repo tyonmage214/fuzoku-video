@@ -45,6 +45,8 @@
         document.getElementById("video-options").classList.add("hidden");
         document.getElementById("duration-options").classList.add("hidden");
         document.getElementById("total-price").innerText = "0";
+        document.getElementById("video-type").value = "";
+        document.getElementById("video-duration").innerHTML = "<option value=''>選択してください</option>";
         
         if (category === "求人用動画") {
             document.getElementById("video-options").classList.remove("hidden");
