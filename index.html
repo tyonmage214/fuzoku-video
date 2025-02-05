@@ -50,7 +50,8 @@
             </article>
 
             <!-- Work -->
-           <article id="work" class="panel">
+           <!-- Work -->
+<article id="work" class="panel">
     <header>
         <h2>サービス概要</h2>
         <p>以下からサービスを選択してください:</p>
@@ -80,56 +81,15 @@
 </article>
 
 <script>
-    const priceList = {
-        "スライドムービー": 3000,
-        "インタビュー形式": 4000,
-        "オリジナル動画": {
-            "30秒～2分": 3000,
-            "2分～5分": 7000,
-            "5分～10分": 13000,
-            "15分以上": 30000
-        },
-        "店舗CM": 10000,
-        "女の子紹介動画": 8000
-    };
-    
     function selectCategory(category) {
-        document.getElementById("video-options").classList.add("hidden");
+        document.getElementById("video-options").classList.remove("hidden");
         document.getElementById("duration-options").classList.add("hidden");
         document.getElementById("total-price").innerText = "0";
         document.getElementById("video-type").value = "";
         document.getElementById("video-duration").innerHTML = "<option value=''>選択してください</option>";
         
-        if (category === "求人用動画") {
-            document.getElementById("video-options").classList.remove("hidden");
-        } else {
+        if (category !== "求人用動画") {
             document.getElementById("total-price").innerText = priceList[category] + "円";
-        }
-    }
-    
-    function updateVideoOptions() {
-        const videoType = document.getElementById("video-type").value;
-        const durationSelect = document.getElementById("video-duration");
-        durationSelect.innerHTML = "<option value=''>選択してください</option>";
-        
-        if (videoType === "オリジナル動画") {
-            document.getElementById("duration-options").classList.remove("hidden");
-            Object.keys(priceList["オリジナル動画"]).forEach(duration => {
-                let option = document.createElement("option");
-                option.value = duration;
-                option.textContent = duration;
-                durationSelect.appendChild(option);
-            });
-        } else if (videoType) {
-            document.getElementById("duration-options").classList.add("hidden");
-            document.getElementById("total-price").innerText = priceList[videoType] + "円";
-        }
-    }
-    
-    function calculatePrice() {
-        const duration = document.getElementById("video-duration").value;
-        if (duration) {
-            document.getElementById("total-price").innerText = priceList["オリジナル動画"][duration] + "円";
         }
     }
 </script>
