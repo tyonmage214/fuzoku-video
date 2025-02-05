@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>店舗用動画編集サービス</title>
+    <title>風俗動画編集代行サービス | 高品質＆迅速対応</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
         .hidden {
             display: none;
         }
@@ -29,32 +27,45 @@
     </style>
 </head>
 <body>
-    <h3>店舗様向け動画編集サービス</h3>
-    <div>
-        <button class="service-button" onclick="selectCategory('求人用動画')">求人用動画</button>
-        <button class="service-button" onclick="selectCategory('店舗CM')">店舗CM</button>
-        <button class="service-button" onclick="selectCategory('女の子紹介動画')">女の子紹介動画</button>
-    </div>
-    
-    <div id="video-options" class="hidden">
-        <h4>動画種別を選択してください</h4>
-        <select id="video-type" onchange="updateVideoOptions()">
-            <option value="">選択してください</option>
-            <option value="スライドムービー">スライドムービー（30秒～1分）</option>
-            <option value="インタビュー形式">インタビュー形式（1分30秒～2分）</option>
-            <option value="オリジナル動画">オリジナル動画（時間指定）</option>
-        </select>
-    </div>
-    
-    <div id="duration-options" class="hidden">
-        <h4>動画時間を選択してください</h4>
-        <select id="video-duration" onchange="calculatePrice()">
-            <option value="">選択してください</option>
-        </select>
-    </div>
-    
-    <h4>合計金額: <span id="total-price">0</span>円</h4>
+    <div id="wrapper">
+        <nav id="nav">
+            <a href="#home" class="icon solid fa-home"><span>トップ</span></a>
+            <a href="#work" class="icon solid fa-folder"><span>サービス</span></a>
+            <a href="#contact" class="icon solid fa-envelope"><span>ご依頼</span></a>
+        </nav>
 
+        <div id="main">
+            <article id="work" class="panel">
+                <header>
+                    <h2>サービス概要</h2>
+                    <p>以下からサービスを選択してください:</p>
+                    <button class="service-button" onclick="selectCategory('求人用動画')">求人用動画</button>
+                    <button class="service-button" onclick="selectCategory('店舗CM')">店舗CM</button>
+                    <button class="service-button" onclick="selectCategory('女の子紹介動画')">女の子紹介動画</button>
+                </header>
+                
+                <div id="video-options" class="hidden">
+                    <h4>動画種別を選択してください</h4>
+                    <select id="video-type" onchange="updateVideoOptions()">
+                        <option value="">選択してください</option>
+                        <option value="スライドムービー">スライドムービー（30秒～1分）</option>
+                        <option value="インタビュー形式">インタビュー形式（1分30秒～2分）</option>
+                        <option value="オリジナル動画">オリジナル動画（時間指定）</option>
+                    </select>
+                </div>
+                
+                <div id="duration-options" class="hidden">
+                    <h4>動画時間を選択してください</h4>
+                    <select id="video-duration" onchange="calculatePrice()">
+                        <option value="">選択してください</option>
+                    </select>
+                </div>
+                
+                <h4>合計金額: <span id="total-price">0</span>円</h4>
+            </article>
+        </div>
+    </div>
+    
     <script>
         const priceList = {
             "スライドムービー": 3000,
