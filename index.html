@@ -50,34 +50,89 @@
             </article>
 
             <!-- Work -->
-            <article id="work" class="panel">
-                <header>
-                    <h2>サービス概要</h2>
-                </header>
-                <table border="1">
-                    <tr>
-                        <th>動画内容</th>
-                        <th>料金</th>
-                    </tr>
-                    <tr>
-                        <td>写メ日記用動画</td>
-                        <td>1,000円 / 本</td>
-                    </tr>
-                    <tr>
-                        <td>女性求人用動画</td>
-                        <td>20,000円 / 本</td>
-                    </tr>
-                    <tr>
-                        <td>スタッフ求人用動画</td>
-                        <td>15,000円 / 本</td>
-                    </tr>
-                    <tr>
-                        <td>店舗CM・女の子紹介動画</td>
-                        <td>20,000円 / 本</td>
-                    </tr>
-                </table>
-            </article>
+           <article id="work" class="panel">
+    <header>
+        <h2>サービス概要</h2>
+        <p>以下からサービスを選択してください:</p>
+        <button class="service-button" onclick="selectCategory('求人用動画')">求人用動画</button>
+        <button class="service-button" onclick="selectCategory('店舗CM')">店舗CM</button>
+        <button class="service-button" onclick="selectCategory('女の子紹介動画')">女の子紹介動画</button>
+    </header>
+    
+    <div id="video-options" class="hidden">
+        <h4>動画種別を選択してください</h4>
+        <select id="video-type" onchange="updateVideoOptions()">
+            <option value="">選択してください</option>
+            <option value="スライドムービー">スライドムービー（30秒～1分）</option>
+            <option value="インタビュー形式">インタビュー形式（1分30秒～2分）</option>
+            <option value="オリジナル動画">オリジナル動画（時間指定）</option>
+        </select>
+    </div>
+    
+    <div id="duration-options" class="hidden">
+        <h4>動画時間を選択してください</h4>
+        <select id="video-duration" onchange="calculatePrice()">
+            <option value="">選択してください</option>
+        </select>
+    </div>
+    
+    <h4>合計金額: <span id="total-price">0</span>円</h4>
+</article>
 
+<script>
+    const priceList = {
+        "スライドムービー": 3000,
+        "インタビュー形式": 4000,
+        "オリジナル動画": {
+            "30秒～2分": 3000,
+            "2分～5分": 7000,
+            "5分～10分": 13000,
+            "15分以上": 30000
+        },
+        "店舗CM": 10000,
+        "女の子紹介動画": 8000
+    };
+    
+    function selectCategory(category) {
+        document.getElementById("video-options").classList.add("hidden");
+        document.getElementById("duration-options").classList.add("hidden");
+        document.getElementById("total-price").innerText = "0";
+        document.getElementById("video-type").value = "";
+        document.getElementById("video-duration").innerHTML = "<option value=''>選択してください</option>";
+        
+        if (category === "求人用動画") {
+            document.getElementById("video-options").classList.remove("hidden");
+        } else {
+            document.getElementById("total-price").innerText = priceList[category] + "円";
+        }
+    }
+    
+    function updateVideoOptions() {
+        const videoType = document.getElementById("video-type").value;
+        const durationSelect = document.getElementById("video-duration");
+        durationSelect.innerHTML = "<option value=''>選択してください</option>";
+        
+        if (videoType === "オリジナル動画") {
+            document.getElementById("duration-options").classList.remove("hidden");
+            Object.keys(priceList["オリジナル動画"]).forEach(duration => {
+                let option = document.createElement("option");
+                option.value = duration;
+                option.textContent = duration;
+                durationSelect.appendChild(option);
+            });
+        } else if (videoType) {
+            document.getElementById("duration-options").classList.add("hidden");
+            document.getElementById("total-price").innerText = priceList[videoType] + "円";
+        }
+    }
+    
+    function calculatePrice() {
+        const duration = document.getElementById("video-duration").value;
+        if (duration) {
+            document.getElementById("total-price").innerText = priceList["オリジナル動画"][duration] + "円";
+        }
+    }
+</script>
             <!-- Contact -->
             <article id="contact" class="panel">
     <header>
