@@ -23,7 +23,7 @@
             padding: 12px 25px;
             margin: 5px;
             border: none;
-            background-color: #007bff; /* グラフの色に合わせて変更 */
+            background-color: #808080; /* グラフの色に合わせて灰色に変更 */
             color: white; /* 対照色に変更 */
             font-size: 16px;
             cursor: pointer;
@@ -31,8 +31,20 @@
             transition: background-color 0.3s, color 0.3s;
         }
         .service-button:hover {
-            background-color: #0056b3; /* ホバー時の色 */
+            background-color: #696969; /* ホバー時の色を少し暗く */
             color: #ffffff; /* ホバー時の文字色 */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         .hidden {
             display: none;
