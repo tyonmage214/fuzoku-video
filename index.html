@@ -84,15 +84,15 @@
 </article>
 
 <script>
-   let basePrice = 0;
+ let basePrice = 0;
 
 function selectCategory(category, price) {
     basePrice = price;
-    document.getElementById("video-options").classList.add("hidden");
+    document.getElementById("video-options").classList.add("hidden"); // 最初は隠す
     document.getElementById("total-price").innerText = basePrice + "円";
 
     if (category === "求人用動画") {
-        document.getElementById("video-options").classList.remove("hidden");
+        document.getElementById("video-options").classList.remove("hidden"); // 求人用動画を選んだときだけ表示
     }
     calculatePrice();
 }
