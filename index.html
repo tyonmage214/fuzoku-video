@@ -69,79 +69,49 @@
         </select>
     </div>
     
-    <div id="duration-options" class="hidden">
-        <h4>動画時間を選択してください</h4>
-        <select id="video-duration" onchange="calculatePrice()">
-            <option value="">選択してください</option>
-            <option value="30秒～2分">30秒～2分（+3000円）</option>
-            <option value="2分～5分">2分～5分（+7000円）</option>
-            <option value="5分～10分">5分～10分（+13000円）</option>
-            <option value="15分以上">15分以上（+30000円）</option>
-        </select>
-    </div>
+    <div id="duration-options">
+    <h4>動画時間を選択してください</h4>
+    <select id="video-duration" onchange="calculatePrice()">
+        <option value="" data-price="0">選択してください</option>
+        <option value="30秒～2分" data-price="3000">30秒～2分</option>
+        <option value="2分～5分" data-price="7000">2分～5分</option>
+        <option value="5分～10分" data-price="13000">5分～10分</option>
+        <option value="15分以上" data-price="30000">15分以上</option>
+    </select>
+</div>
     
     <h4>合計金額: <span id="total-price">0</span>円</h4>
 </article>
 
 <script>
-    const priceList = {
-        "スライドムービー": 3000,
-        "インタビュー形式": 4000,
-        "オリジナル動画": {
-            "30秒～2分": 3000,
-            "2分～5分": 7000,
-            "5分～10分": 13000,
-            "15分以上": 30000
-        },
-        "店舗CM": 10000,
-        "女の子紹介動画": 8000
-    };
-    
-    function selectCategory(category) {
+   let basePrice = 0;
+
+function selectCategory(category, price) {
+    basePrice = price;
+    document.getElementById("video-options").classList.add("hidden");
+    document.getElementById("total-price").innerText = basePrice + "円";
+
+    if (category === "求人用動画") {
         document.getElementById("video-options").classList.remove("hidden");
-        document.getElementById("duration-options").classList.add("hidden");
-        document.getElementById("total-price").innerText = "0";
-        document.getElementById("video-type").value = "";
-        document.getElementById("video-duration").innerHTML = "<option value=''>選択してください</option>";
-        
-        if (category !== "求人用動画") {
-            document.getElementById("total-price").innerText = priceList[category] + "円";
-        }
     }
-    
-    function updateVideoOptions() {
-        const videoType = document.getElementById("video-type").value;
-        const durationSelect = document.getElementById("video-duration");
-        durationSelect.innerHTML = "<option value=''>選択してください</option>";
-        
-        if (videoType === "オリジナル動画") {
-            document.getElementById("duration-options").classList.remove("hidden");
-            Object.keys(priceList["オリジナル動画"]).forEach(duration => {
-                let option = document.createElement("option");
-                option.value = duration;
-                option.textContent = duration + "（+" + priceList["オリジナル動画"][duration] + "円）";
-                durationSelect.appendChild(option);
-            });
-        } else if (videoType) {
-            document.getElementById("duration-options").classList.add("hidden");
-            document.getElementById("total-price").innerText = priceList[videoType] + "円";
-        }
-    }
-    
-    function calculatePrice() {
-        const videoType = document.getElementById("video-type").value;
-        const duration = document.getElementById("video-duration").value;
+    calculatePrice();
+}
 
-        let basePrice = priceList[videoType] || 0;
-        let additionalPrice = 0;
+function updateVideoOptions() {
+    const videoTypeSelect = document.getElementById("video-type");
+    const selectedOption = videoTypeSelect.options[videoTypeSelect.selectedIndex];
+    const price = selectedOption.dataset.price || 0;
+    basePrice = parseInt(price);
+    calculatePrice();
+}
 
-        if (videoType === "オリジナル動画" && duration) {
-            additionalPrice = priceList["オリジナル動画"][duration] || 0;
-        }
+function calculatePrice() {
+    const durationSelect = document.getElementById("video-duration");
+    const selectedOption = durationSelect.options[durationSelect.selectedIndex];
+    const durationPrice = parseInt(selectedOption.dataset.price) || 0;
 
-        const totalPrice = basePrice + additionalPrice;
-        document.getElementById("total-price").innerText = totalPrice + "円";
-    }
+    document.getElementById("total-price").innerText = (basePrice + durationPrice) + "円";
+}
 </script>
             <!-- Contact -->
             <article id="contact" class="panel">
