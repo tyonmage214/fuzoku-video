@@ -49,119 +49,138 @@
                 </a>
             </article>
 
-           <!-- Work -->
-<article id="work" class="panel">
-    <header>
-        <h2>サービス概要</h2>
-        <p>以下からサービスを選択してください:</p>
-        <button class="service-button" onclick="selectCategory('求人用動画')">求人用動画</button>
-        <button class="service-button" onclick="selectCategory('店舗CM')">店舗CM</button>
-        <button class="service-button" onclick="selectCategory('女の子紹介動画')">女の子紹介動画</button>
-    </header>
-    
-    <div id="video-options" class="hidden">
-        <h4>動画種別を選択してください</h4>
-        <select id="video-type" onchange="updateVideoOptions()">
-            <option value="">選択してください</option>
-            <option value="スライドムービー">スライドムービー（30秒～1分）</option>
-            <option value="インタビュー形式">インタビュー形式（1分30秒～2分）</option>
-            <option value="オリジナル動画">オリジナル動画（時間指定）</option>
-        </select>
-    </div>
-    
-    <div id="duration-options">
-    <h4>動画時間を選択してください</h4>
-    <select id="video-duration" onchange="calculatePrice()">
-        <option value="" data-price="0">選択してください</option>
-        <option value="30秒～2分" data-price="3000">30秒～2分</option>
-        <option value="2分～5分" data-price="7000">2分～5分</option>
-        <option value="5分～10分" data-price="13000">5分～10分</option>
-        <option value="15分以上" data-price="30000">15分以上</option>
-    </select>
-</div>
-    
-    <h4>合計金額: <span id="total-price">0</span>円</h4>
-</article>
+            <!-- Work -->
+            <article id="work" class="panel">
+                <header>
+                    <h2>サービス概要</h2>
+                    <p>以下からサービスを選択してください:</p>
+                    <button class="service-button" onclick="selectCategory('求人用動画', 0)">求人用動画</button>
+                    <button class="service-button" onclick="selectCategory('店舗CM', 10000)">店舗CM</button>
+                    <button class="service-button" onclick="selectCategory('女の子紹介動画', 8000)">女の子紹介動画</button>
+                </header>
+                
+                <div id="video-options" class="hidden">
+                    <h4>動画種別を選択してください</h4>
+                    <select id="video-type" onchange="updateVideoOptions()">
+                        <option value="">選択してください</option>
+                        <option value="スライドムービー">スライドムービー（30秒～1分）</option>
+                        <option value="インタビュー形式">インタビュー形式（1分30秒～2分）</option>
+                        <option value="オリジナル動画">オリジナル動画（時間指定）</option>
+                    </select>
+                </div>
+                
+                <div id="duration-options" class="hidden">
+                    <h4>動画時間を選択してください</h4>
+                    <select id="video-duration" onchange="calculatePrice()">
+                        <option value="" data-price="0">選択してください</option>
+                        <option value="30秒～2分" data-price="3000">30秒～2分</option>
+                        <option value="2分～5分" data-price="7000">2分～5分</option>
+                        <option value="5分～10分" data-price="13000">5分～10分</option>
+                        <option value="15分以上" data-price="30000">15分以上</option>
+                    </select>
+                </div>
+                
+                <h4>合計金額: <span id="total-price">0</span>円</h4>
+            </article>
 
-<script>
- let basePrice = 0;
+            <script>
+                let basePrice = 0;
 
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("video-options").classList.add("hidden"); // 初期状態で隠す
-        });
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById("video-options").classList.add("hidden"); // 初期状態で隠す
+                    document.getElementById("duration-options").classList.add("hidden"); // 動画時間も隠す
+                });
 
-        function selectCategory(category, price) {
-            basePrice = price;
-            document.getElementById("video-options").classList.add("hidden"); // まずは隠す
-            document.getElementById("total-price").innerText = basePrice + "円";
+                function selectCategory(category, price) {
+                    basePrice = price;
+                    document.getElementById("total-price").innerText = basePrice + "円";
 
-            if (category === "求人用動画") {
-                document.getElementById("video-options").classList.remove("hidden"); // 求人用動画を選んだら表示
-            }
-            calculatePrice();
-        }
-</script>
+                    if (category === "求人用動画") {
+                        document.getElementById("video-options").classList.remove("hidden"); // 求人用動画を選んだら表示
+                    } else {
+                        document.getElementById("video-options").classList.add("hidden"); // その他は隠す
+                    }
+                    calculatePrice(); // 価格を再計算
+                }
+
+                function updateVideoOptions() {
+                    // 動画種別に応じて動画時間のオプションを表示
+                    document.getElementById("duration-options").classList.remove("hidden");
+                }
+
+                function calculatePrice() {
+                    const durationSelect = document.getElementById("video-duration");
+                    const selectedDuration = durationSelect.options[durationSelect.selectedIndex];
+                    const additionalPrice = parseInt(selectedDuration.getAttribute("data-price"), 10) || 0;
+
+                    const totalPrice = basePrice + additionalPrice;
+                    document.getElementById("total-price").innerText = totalPrice + "円";
+                }
+            </script>
+
             <!-- Contact -->
             <article id="contact" class="panel">
-    <header>
-        <h2>お問い合わせ</h2>
-        <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
-        <ul>
-            <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
-            <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
-        </ul>
-    </header>
- <form id="contact-form" action="https://script.google.com/macros/s/AKfycbynaGCE3mROqdlZ-llBiRjhPbqJYXtMQOu8ePgzPESaEICZVisKGuuMAgzWFo9tpEfJEA/exec" method="POST">
-	<div>
-		<div class="row">
-			<div class="col-6 col-12-medium">
-				<input type="text" name="name" placeholder="お名前" required />
-			</div>
-			<div class="col-6 col-12-medium">
-				<input type="email" name="email" placeholder="メールアドレス" required />
-			</div>
-			<div class="col-6 col-12-medium">
-				<input type="text" name="store_name" placeholder="店舗名" required />
-			</div>
-			<div class="col-6 col-12-medium">
-				<input type="text" name="cast_name" placeholder="キャスト名" />
-			</div>
-			<div class="col-12">
-				<input type="url" name="media_url" placeholder="媒体ページURL" required />
-			</div>
-			<div class="col-12">
-				<label for="video-type">動画種別</label>
-				<select name="video_type" id="video-type" required>
-					<option value="">選択してください</option>
-					<option value="写メ日記用動画">写メ日記用動画</option>
-					<option value="女性求人用動画">女性求人用動画</option>
-					<option value="スタッフ求人用動画">スタッフ求人用動画</option>
-					<option value="店舗CM・女の子紹介動画">店舗CM・女の子紹介動画</option>
-				</select>
-			</div>
-			<div class="col-12">
-				<input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required />
-			</div>
-			<div class="col-12">
-				<input type="text" name="subject" placeholder="件名" required />
-			</div>
-			<div class="col-12">
-				<textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
-			</div>
-			<div class="col-12">
-				<input type="submit" value="送信" />
-			</div>
-		</div>
-	</div>
-</form>
+                <header>
+                    <h2>お問い合わせ</h2>
+                    <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
+                    <ul>
+                        <li>📩 メール: <a href="mailto:example@email.com">example@email.com</a></li>
+                        <li>💬 LINE: <a href="https://line.me/R/ti/p/xxxxxxxx">LINEでお問い合わせ</a></li>
+                    </ul>
+                </header>
+                <form id="contact-form" action="https://script.google.com/macros/s/AKfycbynaGCE3mROqdlZ-llBiRjhPbqJYXtMQOu8ePgzPESaEICZVisKGuuMAgzWFo9tpEfJEA/exec" method="POST">
+                    <div>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="name" placeholder="お名前" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="email" name="email" placeholder="メールアドレス" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="store_name" placeholder="店舗名" required />
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <input type="text" name="cast_name" placeholder="キャスト名" />
+                            </div>
+                            <div class="col-12">
+                                <input type="url" name="media_url" placeholder="媒体ページURL" required />
+                            </div>
+                            <div class="col-12">
+                                <label for="video-type">動画種別</label>
+                                <select name="video_type" id="video-type" required>
+                                    <option value="">選択してください</option>
+                                    <option value="写メ日記用動画">写メ日記用動画</option>
+                                    <option value="女性求人用動画">女性求人用動画</option>
+                                    <option value="スタッフ求人用動画">スタッフ求人用動画</option>
+                                    <option value="店舗CM・女の子紹介動画">店舗CM・女の子紹介動画</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required />
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" placeholder="件名" required />
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" value="送信" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </article>
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
     </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
 </body>
 </html>
