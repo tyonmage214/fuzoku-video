@@ -104,18 +104,15 @@
                 }
 
                 function updateVideoOptions() {
-                    // 動画種別に応じて動画時間のオプションを表示
-                    document.getElementById("duration-options").classList.remove("hidden");
-                }
+    const videoType = document.getElementById("video-type").value;
 
-                function calculatePrice() {
-                    const durationSelect = document.getElementById("video-duration");
-                    const selectedDuration = durationSelect.options[durationSelect.selectedIndex];
-                    const additionalPrice = parseInt(selectedDuration.getAttribute("data-price"), 10) || 0;
-
-                    const totalPrice = basePrice + additionalPrice;
-                    document.getElementById("total-price").innerText = totalPrice + "円";
-                }
+    // 動画時間の選択肢を表示/非表示
+    if (videoType === "オリジナル動画") {
+        document.getElementById("duration-options").classList.remove("hidden");
+    } else {
+        document.getElementById("duration-options").classList.add("hidden");
+    }
+}
             </script>
 
             <!-- Contact -->
