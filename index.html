@@ -43,6 +43,24 @@
         display: none; /* 要素を隠す */
     }
 </style>
+<style>
+    /* 既存のCSSコードはそのままにしておく */
+
+    /* ボタンのスタイル */
+    .custom-button {
+        background-color: #d3d3d3; /* 薄い灰色 */
+        color: #4f4f4f; /* 濃い灰色 */
+        border: none; /* ボーダーなし */
+        padding: 10px 20px; /* パディング */
+        cursor: pointer; /* カーソルをポインターに */
+        border-radius: 5px; /* 角を丸くする */
+        font-size: 16px; /* フォントサイズ */
+    }
+
+    .custom-button:hover {
+        background-color: #c0c0c0; /* ホバー時の色変更 */
+    }
+</style>
 </head>
 <body class="is-preload">
 
@@ -77,9 +95,9 @@
                 <header>
                     <h2>サービス概要</h2>
                     <p>以下からサービスを選択してください:</p>
-                    <button class="service-button" onclick="selectCategory('求人用動画', 0)">求人用動画</button>
-                    <button class="service-button" onclick="selectCategory('店舗CM', 10000)">店舗CM</button>
-                    <button class="service-button" onclick="selectCategory('女の子紹介動画', 8000)">女の子紹介動画</button>
+                   <button class="custom-button">求人動画</button>
+<button class="custom-button">店舗CM</button>
+<button class="custom-button">女の子紹介動画</button>
                 </header>
                 
                 <div id="video-options" class="hidden">
