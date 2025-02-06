@@ -86,32 +86,20 @@
 <script>
  let basePrice = 0;
 
-function selectCategory(category, price) {
-    basePrice = price;
-    document.getElementById("video-options").classList.add("hidden"); // 最初は隠す
-    document.getElementById("total-price").innerText = basePrice + "円";
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("video-options").classList.add("hidden"); // 初期状態で隠す
+        });
 
-    if (category === "求人用動画") {
-        document.getElementById("video-options").classList.remove("hidden"); // 求人用動画を選んだときだけ表示
-    }
-    calculatePrice();
-}
+        function selectCategory(category, price) {
+            basePrice = price;
+            document.getElementById("video-options").classList.add("hidden"); // まずは隠す
+            document.getElementById("total-price").innerText = basePrice + "円";
 
-function updateVideoOptions() {
-    const videoTypeSelect = document.getElementById("video-type");
-    const selectedOption = videoTypeSelect.options[videoTypeSelect.selectedIndex];
-    const price = selectedOption.dataset.price || 0;
-    basePrice = parseInt(price);
-    calculatePrice();
-}
-
-function calculatePrice() {
-    const durationSelect = document.getElementById("video-duration");
-    const selectedOption = durationSelect.options[durationSelect.selectedIndex];
-    const durationPrice = parseInt(selectedOption.dataset.price) || 0;
-
-    document.getElementById("total-price").innerText = (basePrice + durationPrice) + "円";
-}
+            if (category === "求人用動画") {
+                document.getElementById("video-options").classList.remove("hidden"); // 求人用動画を選んだら表示
+            }
+            calculatePrice();
+        }
 </script>
             <!-- Contact -->
             <article id="contact" class="panel">
