@@ -130,30 +130,27 @@
     const selectedOption = document.querySelector('#video-type option:checked');
     const videoPrice = selectedOption ? Number(selectedOption.dataset.price) : 0;
 
-    // 動画種別に応じた料金を設定
-    basePrice = videoPrice;
-    console.log("Selected Video Type:", videoType, "Video Price:", videoPrice, "Base Price:", basePrice);
-
-    document.getElementById("total-price").innerText = basePrice + "円";
-
-    // 動画時間の選択肢を表示
     if (videoType === "オリジナル動画") {
         document.getElementById("duration-options").classList.remove("hidden");
+        basePrice = 0; // オリジナル動画は初期価格を 0 にする
     } else {
         document.getElementById("duration-options").classList.add("hidden");
+        basePrice = videoPrice; // スライドムービーやインタビュー形式の価格を反映
     }
 
-    // 動画時間が選択されたときに合計金額を計算
-    calculatePrice(); // ここで計算を行う
+    console.log("Selected Video Type:", videoType, "Video Price:", videoPrice, "Base Price:", basePrice);
+    
+    calculatePrice(); // ここで合計金額を再計算
 }
-           function calculatePrice() {
+
+function calculatePrice() {
     const selectedDuration = document.getElementById("video-duration");
     const durationPrice = selectedDuration.selectedIndex !== -1 ? Number(selectedDuration.options[selectedDuration.selectedIndex].dataset.price) : 0;
 
     console.log("Base Price:", basePrice);
     console.log("Duration Price:", durationPrice);
 
-    const totalPrice = basePrice + durationPrice;
+    const totalPrice = (basePrice || 0) + durationPrice;
     document.getElementById("total-price").innerText = isNaN(totalPrice) ? "0円" : totalPrice + "円";
 }
           </script>
