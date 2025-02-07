@@ -105,26 +105,26 @@
               });
 
               function selectCategory(category, price) {
-                  basePrice = price;
-                  document.getElementById("total-price").innerText = basePrice + "円";
+    basePrice = price;
+    console.log("Selected Category:", category, "Base Price:", basePrice);
+    document.getElementById("total-price").innerText = basePrice + "円";
 
-                  // 動画オプションの表示
-                  if (category === "求人用動画") {
-                      document.getElementById("video-options").classList.remove("hidden");
-                  } else {
-                      document.getElementById("video-options").classList.add("hidden");
-                  }
+    // 動画オプションの表示
+    if (category === "求人用動画") {
+        document.getElementById("video-options").classList.remove("hidden");
+    } else {
+        document.getElementById("video-options").classList.add("hidden");
+    }
 
-                  // 動画時間の選択肢を表示
-                  if (category === "店舗CM" || category === "女の子紹介動画") {
-                      document.getElementById("duration-options").classList.remove("hidden");
-                  } else {
-                      document.getElementById("duration-options").classList.add("hidden");
-                  }
+    // 動画時間の選択肢を表示
+    if (category === "店舗CM" || category === "女の子紹介動画") {
+        document.getElementById("duration-options").classList.remove("hidden");
+    } else {
+        document.getElementById("duration-options").classList.add("hidden");
+    }
 
-                  calculatePrice();
-              }
-
+    calculatePrice();
+}
               function updateVideoOptions() {
     const videoType = document.getElementById("video-type").value;
     const selectedOption = document.querySelector('#video-type option:checked');
@@ -132,6 +132,7 @@
 
     // 動画種別に応じた料金を設定
     basePrice = videoPrice;
+    console.log("Selected Video Type:", videoType, "Video Price:", videoPrice, "Base Price:", basePrice);
 
     document.getElementById("total-price").innerText = basePrice + "円";
 
