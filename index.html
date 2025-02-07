@@ -126,21 +126,23 @@
     calculatePrice();
 }
               function updateVideoOptions() {
-    const videoType = document.getElementById("video-type").value;
-    const selectedOption = document.querySelector('#video-type option:checked');
-    const videoPrice = selectedOption ? Number(selectedOption.dataset.price) : 0;
+    const videoType = document.getElementById("video-type");
+    const selectedOption = videoType.options[videoType.selectedIndex];
+    
+    // `data-price` の値を取得、ない場合は 0
+    const videoPrice = selectedOption && selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
 
-    if (videoType === "オリジナル動画") {
+    if (videoType.value === "オリジナル動画") {
         document.getElementById("duration-options").classList.remove("hidden");
-        basePrice = 0; // オリジナル動画は初期価格を 0 にする
+        basePrice = 3000; // ✅ オリジナル動画は初期価格を 3000 円にする！
     } else {
         document.getElementById("duration-options").classList.add("hidden");
-        basePrice = videoPrice; // スライドムービーやインタビュー形式の価格を反映
+        basePrice = videoPrice; // スライドムービーやインタビュー形式の価格をセット
     }
 
-    console.log("Selected Video Type:", videoType, "Video Price:", videoPrice, "Base Price:", basePrice);
+    console.log("Selected Video Type:", videoType.value, "Video Price:", videoPrice, "Base Price:", basePrice);
     
-    calculatePrice(); // ここで合計金額を再計算
+    calculatePrice(); // 合計金額を再計算
 }
 
 function calculatePrice() {
