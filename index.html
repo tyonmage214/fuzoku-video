@@ -129,20 +129,23 @@
     const videoType = document.getElementById("video-type");
     const selectedOption = videoType.options[videoType.selectedIndex];
 
-    // `data-price` の値を取得（値がない場合は 0）
+    // 動画種別の価格を取得（ない場合は 0）
     let videoPrice = selectedOption && selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
 
+    // オリジナル動画を選んだ場合
     if (videoType.value === "オリジナル動画") {
         document.getElementById("duration-options").classList.remove("hidden");
-        basePrice = 3000; // ✅ オリジナル動画は初期価格 3000 円
+        basePrice = 3000; // オリジナル動画は 3000円
     } else {
         document.getElementById("duration-options").classList.add("hidden");
-        basePrice = videoPrice; // ✅ スライドムービーやインタビュー形式の価格をセット
+        basePrice = videoPrice; // 他の動画種別の価格をセット
     }
 
+    // 動画時間の選択肢をリセット
+    document.getElementById("video-duration").selectedIndex = 0; // 動画時間の選択を初期化
     console.log("Selected Video Type:", videoType.value, "Video Price:", videoPrice, "Base Price:", basePrice);
 
-    calculatePrice(); // ✅ ここで合計金額を更新
+    calculatePrice(); // 合計金額を更新
 }
 
 function calculatePrice() {
