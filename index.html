@@ -145,15 +145,15 @@
     // 動画時間が選択されたときに合計金額を計算
     calculatePrice(); // ここで計算を行う
 }
-             function calculatePrice() {
+           function calculatePrice() {
     const selectedDuration = document.getElementById("video-duration");
-    const durationPrice = selectedDuration.options[selectedDuration.selectedIndex].dataset.price || 0;
-    
+    const durationPrice = selectedDuration.selectedIndex !== -1 ? Number(selectedDuration.options[selectedDuration.selectedIndex].dataset.price) : 0;
+
     console.log("Base Price:", basePrice);
     console.log("Duration Price:", durationPrice);
 
-    const totalPrice = basePrice + Number(durationPrice);
-    document.getElementById("total-price").innerText = isNaN(totalPrice) ? 0 + "円" : totalPrice + "円";
+    const totalPrice = basePrice + durationPrice;
+    document.getElementById("total-price").innerText = isNaN(totalPrice) ? "0円" : totalPrice + "円";
 }
           </script>
 
