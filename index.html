@@ -85,12 +85,12 @@
               <div id="duration-options" class="hidden">
                   <h4>動画時間を選択してください</h4>
                   <select id="video-duration" onchange="calculatePrice()">
-                      <option value="" data-price="0">選択してください</option>
-                      <option value="30秒～2分" data-price="3000">30秒～2分</option>
-                      <option value="2分～5分" data-price="7000">2分～5分</option>
-                      <option value="5分～10分" data-price="13000">5分～10分</option>
-                      <option value="15分以上" data-price="30000">15分以上</option>
-                  </select>
+    <option value="" data-price="0">選択してください</option>
+    <option value="30秒～2分" data-price="3000">30秒～2分</option>
+    <option value="2分～5分" data-price="7000">2分～5分</option>
+    <option value="5分～10分" data-price="13000">5分～10分</option>
+    <option value="15分以上" data-price="30000">15分以上</option>
+</select>
               </div>
               
               <h4>合計金額: <span id="total-price">0</span>円</h4>
@@ -143,15 +143,18 @@
     }
 
     // 動画時間が選択されたときに合計金額を計算
-    calculatePrice();
+    calculatePrice(); // ここで計算を行う
 }
+             function calculatePrice() {
+    const selectedDuration = document.getElementById("video-duration");
+    const durationPrice = selectedDuration.options[selectedDuration.selectedIndex].dataset.price || 0;
+    
+    console.log("Base Price:", basePrice);
+    console.log("Duration Price:", durationPrice);
 
-              function calculatePrice() {
-                  const selectedDuration = document.getElementById("video-duration");
-                  const durationPrice = selectedDuration.options[selectedDuration.selectedIndex].dataset.price || 0;
-                  const totalPrice = basePrice + Number(durationPrice);
-                  document.getElementById("total-price").innerText = isNaN(totalPrice) ? 0 + "円" : totalPrice + "円";
-              }
+    const totalPrice = basePrice + Number(durationPrice);
+    document.getElementById("total-price").innerText = isNaN(totalPrice) ? 0 + "円" : totalPrice + "円";
+}
           </script>
 
           <article id="contact" class="panel">
