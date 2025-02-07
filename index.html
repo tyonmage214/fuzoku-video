@@ -126,22 +126,25 @@
               }
 
               function updateVideoOptions() {
-                  const videoType = document.getElementById("video-type").value;
-                  const selectedOption = document.querySelector('#video-type option:checked');
-                  const videoPrice = selectedOption ? Number(selectedOption.dataset.price) : 0;
+    const videoType = document.getElementById("video-type").value;
+    const selectedOption = document.querySelector('#video-type option:checked');
+    const videoPrice = selectedOption ? Number(selectedOption.dataset.price) : 0;
 
-                  // 動画種別に応じた料金を設定
-                  basePrice = videoPrice;
+    // 動画種別に応じた料金を設定
+    basePrice = videoPrice;
 
-                  document.getElementById("total-price").innerText = basePrice + "円";
+    document.getElementById("total-price").innerText = basePrice + "円";
 
-                  // 動画時間の選択肢を表示
-                  if (videoType === "オリジナル動画") {
-                      document.getElementById("duration-options").classList.remove("hidden");
-                  } else {
-                      document.getElementById("duration-options").classList.add("hidden");
-                  }
-              }
+    // 動画時間の選択肢を表示
+    if (videoType === "オリジナル動画") {
+        document.getElementById("duration-options").classList.remove("hidden");
+    } else {
+        document.getElementById("duration-options").classList.add("hidden");
+    }
+
+    // 動画時間が選択されたときに合計金額を計算
+    calculatePrice();
+}
 
               function calculatePrice() {
                   const selectedDuration = document.getElementById("video-duration");
