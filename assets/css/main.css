@@ -2189,3 +2189,19 @@ input, select, textarea {
 			}
 
 		}
+/* 入力フォームの統一スタイル */
+.input-style {
+    width: 100%;            /* 横幅を100%に */
+    padding: 10px;          /* 余白をつける */
+    border: 1px solid #ddd; /* 枠線を薄いグレーに */
+    border-radius: 5px;     /* 角を丸くする */
+    font-size: 16px;        /* フォントサイズ */
+    box-sizing: border-box; /* ボックスサイズを調整 */
+}
+
+/* フォーカス時のデザイン */
+.input-style:focus {
+    border-color: #007bff;  /* 青色の枠線 */
+    outline: none;          /* デフォルトのアウトラインを削除 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* ふんわり光るエフェクト */
+}
