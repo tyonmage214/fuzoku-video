@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>風俗動画編集代行サービス | 高品質＆迅速対応</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <!-- Google Fonts の読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@250;400;700&display=swap" rel="stylesheet">
+
     <style>
+        /* 全体のフォント設定 */
+        body {
+            font-family: 'source-han-sans-vf', sans-serif;
+            font-style: normal;
+            font-variation-settings: "wght" 250;
+        }
+
         /* URL入力フォームのスタイル */
         input[type="url"] {
             width: 100%;
@@ -12,54 +28,37 @@
             box-sizing: border-box;
         }
 
-        /* 全体のフォント設定 */
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-style: normal;
-            font-variation-settings: "wght" 250;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none; /* 要素を隠す */
+        }
+
+        .custom-button {
+            background-color: #d3d3d3; /* 薄い灰色 */
+            color: #4f4f4f; /* 濃い灰色 */
+            border: none; /* ボーダーなし */
+            padding: 10px 20px; /* パディング */
+            cursor: pointer; /* カーソルをポインターに */
+            border-radius: 5px; /* 角を丸くする */
+            font-size: 16px; /* フォントサイズ */
+        }
+
+        .custom-button:hover {
+            background-color: #c0c0c0; /* ホバー時の色変更 */
         }
     </style>
-
-    <!-- Google Fonts の読み込み -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@250;400;700&display=swap" rel="stylesheet">
-</head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>風俗動画編集代行サービス | 高品質＆迅速対応</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
- <style>
-  table {
-      width: 100%;
-      border-collapse: collapse;
-  }
-  th, td {
-      padding: 10px;
-      text-align: left;
-      border: 1px solid #ddd;
-  }
-  th {
-      background-color: #f2f2f2;
-  }
-  
-  .hidden {
-      display: none; /* 要素を隠す */
-  }
-
-  .custom-button {
-      background-color: #d3d3d3; /* 薄い灰色 */
-      color: #4f4f4f; /* 濃い灰色 */
-      border: none; /* ボーダーなし */
-      padding: 10px 20px; /* パディング */
-      cursor: pointer; /* カーソルをポインターに */
-      border-radius: 5px; /* 角を丸くする */
-      font-size: 16px; /* フォントサイズ */
-  }
-
-  .custom-button:hover {
-      background-color: #c0c0c0; /* ホバー時の色変更 */
-  }
-</style>
 </head>
 <body class="is-preload">
 
@@ -107,12 +106,12 @@
               <div id="duration-options" class="hidden">
                   <h4>動画時間を選択してください</h4>
                   <select id="video-duration" onchange="calculatePrice()">
-    <option value="" data-price="0">選択してください</option>
-    <option value="30秒～2分" data-price="3000">30秒～2分</option>
-    <option value="2分～5分" data-price="7000">2分～5分</option>
-    <option value="5分～10分" data-price="13000">5分～10分</option>
-    <option value="15分以上" data-price="30000">15分以上</option>
-</select>
+                      <option value="" data-price="0">選択してください</option>
+                      <option value="30秒～2分" data-price="3000">30秒～2分</option>
+                      <option value="2分～5分" data-price="7000">2分～5分</option>
+                      <option value="5分～10分" data-price="13000">5分～10分</option>
+                      <option value="15分以上" data-price="30000">15分以上</option>
+                  </select>
               </div>
               
               <h4>合計金額: <span id="total-price">0</span>円</h4>
@@ -127,59 +126,60 @@
               });
 
               function selectCategory(category, price) {
-    basePrice = price;
-    console.log("Selected Category:", category, "Base Price:", basePrice);
-    document.getElementById("total-price").innerText = basePrice + "円";
+                  basePrice = price;
+                  console.log("Selected Category:", category, "Base Price:", basePrice);
+                  document.getElementById("total-price").innerText = basePrice + "円";
 
-    // 動画オプションの表示
-    if (category === "求人用動画") {
-        document.getElementById("video-options").classList.remove("hidden");
-    } else {
-        document.getElementById("video-options").classList.add("hidden");
-    }
+                  // 動画オプションの表示
+                  if (category === "求人用動画") {
+                      document.getElementById("video-options").classList.remove("hidden");
+                  } else {
+                      document.getElementById("video-options").classList.add("hidden");
+                  }
 
-    // 動画時間の選択肢を表示
-    if (category === "店舗CM" || category === "女の子紹介動画") {
-        document.getElementById("duration-options").classList.remove("hidden");
-    } else {
-        document.getElementById("duration-options").classList.add("hidden");
-    }
+                  // 動画時間の選択肢を表示
+                  if (category === "店舗CM" || category === "女の子紹介動画") {
+                      document.getElementById("duration-options").classList.remove("hidden");
+                  } else {
+                      document.getElementById("duration-options").classList.add("hidden");
+                  }
 
-    calculatePrice();
-}
+                  calculatePrice();
+              }
+
               function updateVideoOptions() {
-    const videoType = document.getElementById("video-type");
-    const selectedOption = videoType.options[videoType.selectedIndex];
+                  const videoType = document.getElementById("video-type");
+                  const selectedOption = videoType.options[videoType.selectedIndex];
 
-    // 動画種別の価格を取得（ない場合は 0）
-    let videoPrice = selectedOption && selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
+                  // 動画種別の価格を取得（ない場合は 0）
+                  let videoPrice = selectedOption && selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
 
-    // オリジナル動画を選んだ場合
-    if (videoType.value === "オリジナル動画") {
-        document.getElementById("duration-options").classList.remove("hidden");
-        basePrice = 3000; // オリジナル動画は 3000円
-    } else {
-        document.getElementById("duration-options").classList.add("hidden");
-        basePrice = videoPrice; // 他の動画種別の価格をセット
-    }
+                  // オリジナル動画を選んだ場合
+                  if (videoType.value === "オリジナル動画") {
+                      document.getElementById("duration-options").classList.remove("hidden");
+                      basePrice = 3000; // オリジナル動画は 3000円
+                  } else {
+                      document.getElementById("duration-options").classList.add("hidden");
+                      basePrice = videoPrice; // 他の動画種別の価格をセット
+                  }
 
-    // 動画時間の選択肢をリセット
-    document.getElementById("video-duration").selectedIndex = 0; // 動画時間の選択を初期化
-    console.log("Selected Video Type:", videoType.value, "Video Price:", videoPrice, "Base Price:", basePrice);
+                  // 動画時間の選択肢をリセット
+                  document.getElementById("video-duration").selectedIndex = 0; // 動画時間の選択を初期化
+                  console.log("Selected Video Type:", videoType.value, "Video Price:", videoPrice, "Base Price:", basePrice);
 
-    calculatePrice(); // 合計金額を更新
-}
+                  calculatePrice(); // 合計金額を更新
+              }
 
-function calculatePrice() {
-    const selectedDuration = document.getElementById("video-duration");
-    const durationPrice = selectedDuration.selectedIndex !== -1 ? Number(selectedDuration.options[selectedDuration.selectedIndex].dataset.price) : 0;
+              function calculatePrice() {
+                  const selectedDuration = document.getElementById("video-duration");
+                  const durationPrice = selectedDuration.selectedIndex !== -1 ? Number(selectedDuration.options[selectedDuration.selectedIndex].dataset.price) : 0;
 
-    console.log("Base Price:", basePrice);
-    console.log("Duration Price:", durationPrice);
+                  console.log("Base Price:", basePrice);
+                  console.log("Duration Price:", durationPrice);
 
-    const totalPrice = (basePrice || 0) + durationPrice;
-    document.getElementById("total-price").innerText = isNaN(totalPrice) ? "0円" : totalPrice + "円";
-}
+                  const totalPrice = (basePrice || 0) + durationPrice;
+                  document.getElementById("total-price").innerText = isNaN(totalPrice) ? "0円" : totalPrice + "円";
+              }
           </script>
 
           <article id="contact" class="panel">
