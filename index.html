@@ -58,6 +58,11 @@
         .custom-button:hover {
             background-color: #c0c0c0; /* ホバー時の色変更 */
         }
+
+        /* タイトルを太字にする */
+        h1, h2 {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -224,29 +229,19 @@
                     </select>
                 </div>
                 <div class="col-12">
-                    <input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required class="input-style" />
+                    <textarea name="message" placeholder="ご依頼内容" rows="4" required></textarea>
                 </div>
                 <div class="col-12">
-                    <input type="text" name="subject" placeholder="件名" required />
-                </div>
-                <div class="col-12">
-                    <textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
-                </div>
-                <div class="col-12">
-                    <input type="submit" value="送信" />
+                    <input type="submit" value="送信" class="special" />
                 </div>
             </div>
         </div>
     </form>
 </article>
+
       </div>
 
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/browser.min.js"></script>
-      <script src="assets/js/breakpoints.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
-
   </div>
+
 </body>
 </html>
