@@ -1,262 +1,38 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>風俗動画編集代行サービス | 高品質＆迅速対応</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
-    <!-- Google Fonts の読み込み -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@250;400;700&display=swap" rel="stylesheet">
-
-    <style>
-    /* タイトルを太字にする */
-    h1, h2 {
-        font-weight: bold;
-    }
-
-    /* 全体のフォント設定 */
-    body {
-        font-family: 'source-han-sans-vf', sans-serif;
-        font-style: normal;
-        font-variation-settings: "wght" 250;
-    }
-
-    /* URL入力フォームのスタイル */
-    input[type="url"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-
-    .hidden {
-        display: none; /* 要素を隠す */
-    }
-
-    .custom-button {
-        background-color: #d3d3d3; /* 薄い灰色 */
-        color: #4f4f4f; /* 濃い灰色 */
-        border: none; /* ボーダーなし */
-        padding: 10px 20px; /* パディング */
-        cursor: pointer; /* カーソルをポインターに */
-        border-radius: 5px; /* 角を丸くする */
-        font-size: 16px; /* フォントサイズ */
-    }
-
-    .custom-button:hover {
-        background-color: #c0c0c0; /* ホバー時の色変更 */
-    }
-    </style>
-
-</head>
-<body>
-    <!-- コンテンツがここに続きます -->
-</body>
-</html>
-<body class="is-preload">
-
-  <div id="wrapper">
-
-      <nav id="nav">
-          <a href="#home" class="icon solid fa-home"><span>トップ</span></a>
-          <a href="#work" class="icon solid fa-folder"><span>サービス</span></a>
-          <a href="#contact" class="icon solid fa-envelope"><span>ご依頼</span></a>
-          <a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>X</span></a>
-      </nav>
-
-      <div id="main">
-
-          <article id="home" class="panel intro">
-              <header>
-                  <h1>風俗動画編集代行サービス</h1>
-                  <p>風俗業界向けの動画編集サービスを提供しています。</p>
-              </header>
-              <a href="#work" class="jumplink pic">
-                  <span class="arrow icon solid fa-chevron-right"><span>サービスを見る</span></span>
-                  <img src="images/me.jpg" alt="風俗動画編集サービスの画像" />
-              </a>
-          </article>
-
-          <article id="work" class="panel">
-              <header>
-                  <h2>サービス概要</h2>
-                  <p>以下からサービスを選択してください:</p>
-                 <button class="custom-button" onclick="selectCategory('求人用動画', 0)">求人動画</button>
-                 <button class="custom-button" onclick="selectCategory('店舗CM', 10000)">店舗CM</button>
-                 <button class="custom-button" onclick="selectCategory('女の子紹介動画', 8000)">女の子紹介動画</button>
-              </header>
-              
-              <div id="video-options" class="hidden">
-                  <h4>動画種別を選択してください</h4>
-                  <select id="video-type" onchange="updateVideoOptions()">
-                      <option value="">選択してください</option>
-                      <option value="スライドムービー" data-price="3000">スライドムービー（30秒～1分）</option>
-                      <option value="インタビュー形式" data-price="4000">インタビュー形式（1分30秒～2分）</option>
-                      <option value="オリジナル動画">オリジナル動画（時間指定）</option>
-                  </select>
-              </div>
-              
-              <div id="duration-options" class="hidden">
-                  <h4>動画時間を選択してください</h4>
-                  <select id="video-duration" onchange="calculatePrice()">
-                      <option value="" data-price="0">選択してください</option>
-                      <option value="30秒～2分" data-price="3000">30秒～2分</option>
-                      <option value="2分～5分" data-price="7000">2分～5分</option>
-                      <option value="5分～10分" data-price="13000">5分～10分</option>
-                      <option value="15分以上" data-price="30000">15分以上</option>
-                  </select>
-              </div>
-              
-              <h4>合計金額: <span id="total-price">0</span>円</h4>
-          </article>
-
-          <script>
-              let basePrice = 0;
-
-              document.addEventListener("DOMContentLoaded", function () {
-                  document.getElementById("video-options").classList.add("hidden");
-                  document.getElementById("duration-options").classList.add("hidden");
-              });
-
-              function selectCategory(category, price) {
-                  basePrice = price;
-                  console.log("Selected Category:", category, "Base Price:", basePrice);
-                  document.getElementById("total-price").innerText = basePrice + "円";
-
-                  // 動画オプションの表示
-                  if (category === "求人用動画") {
-                      document.getElementById("video-options").classList.remove("hidden");
-                  } else {
-                      document.getElementById("video-options").classList.add("hidden");
-                  }
-
-                  // 動画時間の選択肢を表示
-                  if (category === "店舗CM" || category === "女の子紹介動画") {
-                      document.getElementById("duration-options").classList.remove("hidden");
-                  } else {
-                      document.getElementById("duration-options").classList.add("hidden");
-                  }
-
-                  calculatePrice();
-              }
-
-              function updateVideoOptions() {
-                  const videoType = document.getElementById("video-type");
-                  const selectedOption = videoType.options[videoType.selectedIndex];
-
-                  // 動画種別の価格を取得（ない場合は 0）
-                  let videoPrice = selectedOption && selectedOption.dataset.price ? Number(selectedOption.dataset.price) : 0;
-
-                  // オリジナル動画を選んだ場合
-                  if (videoType.value === "オリジナル動画") {
-                      document.getElementById("duration-options").classList.remove("hidden");
-                      basePrice = 3000; // オリジナル動画は 3000円
-                  } else {
-                      document.getElementById("duration-options").classList.add("hidden");
-                      basePrice = videoPrice; // 他の動画種別の価格をセット
-                  }
-
-                  // 動画時間の選択肢をリセット
-                  document.getElementById("video-duration").selectedIndex = 0; // 動画時間の選択を初期化
-                  console.log("Selected Video Type:", videoType.value, "Video Price:", videoPrice, "Base Price:", basePrice);
-
-                  calculatePrice(); // 合計金額を更新
-              }
-
-              function calculatePrice() {
-                  const selectedDuration = document.getElementById("video-duration");
-                  const durationPrice = selectedDuration.selectedIndex !== -1 ? Number(selectedDuration.options[selectedDuration.selectedIndex].dataset.price) : 0;
-
-                  console.log("Base Price:", basePrice);
-                  console.log("Duration Price:", durationPrice);
-
-                  const totalPrice = (basePrice || 0) + durationPrice;
-                  document.getElementById("total-price").innerText = isNaN(totalPrice) ? "0円" : totalPrice + "円";
-              }
-          </script>
-
-      <article id="contact" class="panel">
-    <header>
-        <h2>お問い合わせ</h2>
-        <p>ご依頼・お問い合わせは以下よりご連絡ください。</p>
-        <div class="icon-container" style="text-align: center;">
-            <a href="mailto:example@email.com">
-                <img src="https://img.icons8.com/?size=100&id=JDS0NRZIZDTH&format=png&color=000000" alt="メールアイコン" style="width: 100px; height: 100px;">
-            </a>
-            <a href="https://line.me/R/ti/p/xxxxxxxx" target="_blank">
-                <img src="https://img.icons8.com/?size=512&id=4VYtcK8n0Hsg&format=png" alt="LINEアイコン" style="width: 100px; height: 100px;">
-            </a>
-        </div>
-    </header>
-    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbynaGCE3mROqdlZ-llBiRjhPbqJYXtMQOu8ePgzPESaEICZVisKGuuMAgzWFo9tpEfJEA/exec" method="POST">
-        <div>
-            <div class="row">
-                <div class="col-6 col-12-medium">
-                    <input type="text" name="name" placeholder="お名前" required />
-                </div>
-                <div class="col-6 col-12-medium">
-                    <input type="email" name="email" placeholder="メールアドレス" required />
-                </div>
-                <div class="col-6 col-12-medium">
-                    <input type="text" name="store_name" placeholder="店舗名" required />
-                </div>
-                <div class="col-6 col-12-medium">
-                    <input type="text" name="cast_name" placeholder="キャスト名" />
-                </div>
-                <div class="col-12">
-                    <input type="url" name="media_url" placeholder="媒体ページURL" required class="input-style" />
-                </div>
-                <div class="col-12">
-                    <label for="video-type">動画種別</label>
-                    <select name="video_type" id="video-type" required>
-                        <option value="">選択してください</option>
-                        <option value="写メ日記用動画">写メ日記用動画</option>
-                        <option value="女性求人用動画">女性求人用動画</option>
-                        <option value="スタッフ求人用動画">スタッフ求人用動画</option>
-                        <option value="店舗CM・女の子紹介動画">店舗CM・女の子紹介動画</option>
-                    </select>
-                </div>
-                <div class="col-12">
-                    <input type="url" name="video_url" placeholder="ギガファイル便のURLを入力してください" required class="input-style" />
-                </div>
-                <div class="col-12">
-                    <input type="text" name="subject" placeholder="件名" required />
-                </div>
-                <div class="col-12">
-                    <textarea name="message" placeholder="お問い合わせ内容" rows="6" required></textarea>
-                </div>
-                <div class="col-12">
-                    <input type="submit" value="送信" />
-                </div>
+export default function ProfileForm() {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <motion.div
+        className="w-full max-w-lg p-6 bg-white rounded-2xl shadow-lg"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-2xl font-bold text-center mb-4">森井玲奈のプロフィール</h2>
+        <Card>
+          <CardContent className="p-4 space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">名前</label>
+              <Input type="text" placeholder="森井玲奈" disabled className="mt-1" />
             </div>
-        </div>
-    </form>
-</article>
-      </div>
-
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/browser.min.js"></script>
-      <script src="assets/js/breakpoints.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
-
-  </div>
-</body>
-</html>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">自己紹介</label>
+              <Textarea placeholder="ここに自己紹介を入力" className="mt-1" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">連絡先</label>
+              <Input type="email" placeholder="example@email.com" className="mt-1" />
+            </div>
+            <Button className="w-full mt-4">送信</Button>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  );
+}
